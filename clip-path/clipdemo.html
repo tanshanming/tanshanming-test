@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    	#clipped {
+		  margin-bottom: 20px;
+		  clip-path: url(#cross);
+		}
+		.cli{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+			/*clip-path: circle(40%);*/
+			clip-path: padding-box circle(50px at 0 100px);
+		}
+		.outer{
+		  width:100px;
+		  height: 100px;
+		  background:orange;
+		  clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+		  transition:.5s clip-path;
+		}  
+		.outer:hover{
+		  clip-path:polygon(0 0,0 0,100% 0,100% 0,100% 100%,100% 100%,0 100%,0 100%);
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+
+	</div>
+	<div class="cli">
+
+	</div>
+	<img id="clipped" src="./svgdemo.svg"
+    alt="MDN logo">
+
+	<svg height="0" width="0">
+	  <defs>
+	    <clipPath id="cross">
+	      <rect y="110" x="137" width="90" height="90"/>
+	      <rect x="0" y="110" width="90" height="90"/>
+	      <rect x="137" y="0" width="90" height="90"/>
+	      <rect x="0" y="0" width="90" height="90"/>
+	    </clipPath>
+	  </defs>
+	</svg>
+
+	<select id="clipPath">
+	  <option value="none">none</option>
+	  <option value="circle(100px at 110px 100px)">circle</option>
+	  <option value="url(#cross)" selected>cross</option>
+	  <option value="inset(20px round 20px)">inset</option>
+	  <option value="path('M 0 200 L 0,110 A 110,90 0,0,1 240,100 L 200 340 z')">path</option>
+	</select>
+    
+</body>
+</html>
